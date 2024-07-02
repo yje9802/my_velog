@@ -29,3 +29,10 @@
   - `checkout@v2`가 node12를 사용하는데 node12는 더이상 지원하지 않는 상황
   - 해결 방법
     - `checkout@v3`로 바꿔주면 된다.
+
+<br> 
+
+---
+### 🔗 참고 자료
+- [velog와 github 연동 : 벨로그 글쓰고 잔디심기 🌱](https://velog.io/@sooozi/velog%EC%99%80-github-%EC%97%B0%EB%8F%99-%EB%B2%A8%EB%A1%9C%EA%B7%B8-%EA%B8%80%EC%93%B0%EA%B3%A0-%EC%9E%94%EB%94%94%EC%8B%AC%EA%B8%B0)
+- [feedparser Documentation](https://feedparser.readthedocs.io/en/latest/common-rss-elements.html)

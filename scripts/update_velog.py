@@ -2,16 +2,16 @@ import feedparser
 import git
 import os
 
-# 벨로그 RSS 피드 URL
+# Velog RSS 피드 URL
 rss_url = 'https://api.velog.io/rss/@yje9802'
 
-# 깃허브 레포지토리 경로
+# 작업을 반영할 깃허브 레포지토리 경로
 repo_path = '.'
 
 # 'velog-posts' 폴더 경로
 posts_dir = os.path.join(repo_path, 'posts')
 
-# 'velog-posts' 폴더가 없다면 생성
+# 'posts' 폴더가 없다면 생성
 if not os.path.exists(posts_dir):
     os.makedirs(posts_dir)
 
@@ -27,14 +27,30 @@ for entry in feed.entries:
     file_name = entry.title
     file_name = file_name.replace('/', '-')  # 슬래시를 대시로 대체
     file_name = file_name.replace('\\', '-')  # 백슬래시를 대시로 대체
-    # 필요에 따라 추가 문자 대체
+    
+    folder_name = ''
+    if file_name[0] == '[':
+        for i in range(len(file_name)):
+            if file_name[i] == ']':
+                folder_name = file_name[:i+1]
+                break
+    else:
+        folder_name = '[ETC.]'
+    
+    if not os.path.exists(folder_name):
+        os.makedirs(folder_name)
+    specified_posts_dir += '/' + folder_name
+    
     file_name += '.md'
-    file_path = os.path.join(posts_dir, file_name)
+    file_path = os.path.join(specified_posts_dir, file_name)
 
-    # 파일이 이미 존재하지 않으면 생성
+    # 파일이 존재하지 않으면 생성
     if not os.path.exists(file_path):
         with open(file_path, 'w', encoding='utf-8') as file:
-            file.write(entry.description)  # 글 내용을 파일에 작성
+            contents = f'[원본 링크]({entry.link}) \n <br> \n'
+            contents += entry.description
+            file.write(contents)  # 글 내용을 파일에 작성
+            
 
         # 깃허브 커밋
         repo.git.add(file_path)

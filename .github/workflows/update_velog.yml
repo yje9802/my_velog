@@ -21,7 +21,7 @@ jobs:
                   git config --global user.email 'github-actions[bot]@users.noreply.github.com'
                   git push https://yje9802${{ secrets.GH_PAT_JIDAK }}@github.com/yje9802/my_velog.git
 
-            - name: Set up Python
+            - name: Set-up Python
               uses: actions/setup-python@v2
               with:
                   python-version: "3.x"

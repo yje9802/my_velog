@@ -9,7 +9,7 @@ rss_url = 'https://api.velog.io/rss/@yje9802'
 repo_path = '.'
 
 # 'velog-posts' 폴더 경로
-posts_dir = os.path.join(repo_path, 'velog-posts')
+posts_dir = os.path.join(repo_path, 'posts')
 
 # 'velog-posts' 폴더가 없다면 생성
 if not os.path.exists(posts_dir):

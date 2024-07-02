@@ -13,7 +13,7 @@ jobs:
 
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
+              uses: actions/checkout@v3
 
             - name: Push changes
               run: |
@@ -22,7 +22,7 @@ jobs:
                   git push https://yje9802${{ secrets.GH_PAT_JIDAK }}@github.com/yje9802/my_velog.git
 
             - name: Set-up Python
-              uses: actions/setup-python@v5
+              uses: actions/setup-python@v3
               with:
                   python-version: "3.x"
 

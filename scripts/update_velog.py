@@ -28,7 +28,7 @@ for entry in feed.entries:
     file_name = file_name.replace('/', '-')  # 슬래시를 대시로 대체
     file_name = file_name.replace('\\', '-')  # 백슬래시를 대시로 대체
     
-    folder_name = ''
+    # 카테고리별 하위 폴더 생성 
     if file_name[0] == '[':
         for i in range(len(file_name)):
             if file_name[i] == ']':
@@ -37,7 +37,7 @@ for entry in feed.entries:
     else:
         folder_name = '[ETC.]'
     
-    specified_posts_dir = posts_dir + '/' + folder_name
+    specified_posts_dir = posts_dir + '/' + folder_name # 하위 폴더까지 추가된 경로
     if not os.path.exists(specified_posts_dir):
         os.makedirs(specified_posts_dir)
     
@@ -47,8 +47,8 @@ for entry in feed.entries:
     # 파일이 존재하지 않으면 생성
     if not os.path.exists(file_path):
         with open(file_path, 'w', encoding='utf-8') as file:
-            # contents = f'[원본 링크]({entry.link}) \n <br> \n'
-            # contents += entry.description
+            contents = f'[원본 링크]({entry.link}) \n <br> \n'
+            contents += entry.description
             file.write(entry.description)  # 글 내용을 파일에 작성
             
 

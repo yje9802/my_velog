@@ -49,7 +49,7 @@ for entry in feed.entries:
         with open(file_path, 'w', encoding='utf-8') as file:
             contents = f'<p><a href="{entry.link}" color="black">원본 링크</a></p><br>'
             contents += entry.description
-            file.write(entry.description)  # 글 내용을 파일에 작성
+            file.write(contents)  # 글 내용을 파일에 작성
             
 
         # 깃허브 커밋

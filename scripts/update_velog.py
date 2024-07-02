@@ -39,7 +39,7 @@ for entry in feed.entries:
     
     if not os.path.exists(folder_name):
         os.makedirs(folder_name)
-    specified_posts_dir += '/' + folder_name
+    specified_posts_dir = posts_dir + '/' + folder_name
     
     file_name += '.md'
     file_path = os.path.join(specified_posts_dir, file_name)

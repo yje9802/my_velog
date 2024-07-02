@@ -54,7 +54,7 @@ for entry in feed.entries:
             
 
         # 깃허브 커밋
-        repo.git.add(file_path)
+        # repo.git.add(file_path)
         repo.git.commit('-m', f'포스트 업데이트: {entry.title}')
 
 # 변경 사항을 깃허브에 푸시

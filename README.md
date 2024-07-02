@@ -1,4 +1,10 @@
 # my_velog 레포지토리
+
+<p align="center">
+  <img src="./assets/velog_capture.png" align="center" width="30%"> 
+  <img src="./assets/github_capture.png" align="center" width="30%"> 
+</p>
+
 <h3 align=center>🌱 Velog 글 깃허브로 모아보기 🌱</h3>
 
 ## 👋 Introduction
@@ -29,6 +35,8 @@
   - `checkout@v2`가 node12를 사용하는데 node12는 더이상 지원하지 않는 상황
   - 해결 방법
     - `checkout@v3`로 바꿔주면 된다.
+- 블로그의 모든 게시글을 가져오지 못 하는 문제
+  - Velog RSS로 한 번에 가져올 수 있는 게시글의 수가 총 20개로 제한되어 있는 것 같다.
 
 <br> 
 

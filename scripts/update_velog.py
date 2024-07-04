@@ -69,7 +69,7 @@ def check_posts(path):
             # 폴더 안에 또다른 하위 폴더가 없는 구조이기에 가능 
             sub_files = []
             for sub_item in os.listdir(item_path):
-                sub_item_path = os.path.join(repo_path, sub_item)
+                sub_item_path = os.path.join(item_path, sub_item)
                 
                 break_point = 0 # ] 부분 위치
                 for i in range(len(sub_item)):

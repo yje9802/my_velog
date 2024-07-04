@@ -71,7 +71,7 @@ def check_posts(path):
             # 폴더 안에 또다른 하위 폴더가 없는 구조이기에 가능 
             sub_files = []
             for sub_item in os.listdir(item_path): 
-                sub_item_path = "./" + item + sub_item
+                sub_item_path = "./" + item + "/" + sub_item
                 
                 sub_item = sub_item.replace('_', ' ') # 기존에 언더바로 대체되었던 띄어쓰기 복구
                 break_point = 0 # ] 부분 위치
@@ -91,17 +91,17 @@ def check_posts(path):
 
 readme_path = os.path.join(posts_dir, "README.md") # /posts/README.md
 # if is_added:
-# 추가된 게시글이 존재한다면 README 업데이트
-folders_files = check_posts(posts_dir)
-with open(readme_path, "w", encoding="utf-8") as f:
-    f.write("# 📌 Velog 게시글 목록 한 눈에 보기\n")
-    for folder in folders_files.keys():
-        f.write(f"### 📁 {folder}\n")
-        for file_info in folders_files[folder]:      
-            f.write(f"- [{file_info[0]}]({file_info[1]})  \n")
-# 깃허브 커밋
-repo.git.add(readme_path)
-repo.git.commit('-m', f'포스트 업데이트: README.md')
+    # 추가된 게시글이 존재한다면 README 업데이트
+    folders_files = check_posts(posts_dir)
+    with open(readme_path, "w", encoding="utf-8") as f:
+        f.write("# 📌 Velog 게시글 목록 한 눈에 보기\n")
+        for folder in folders_files.keys():
+            f.write(f"### 📁 {folder}\n")
+            for file_info in folders_files[folder]:      
+                f.write(f"- [{file_info[0]}]({file_info[1]})  \n")
+    # 깃허브 커밋
+    repo.git.add(readme_path)
+    repo.git.commit('-m', f'포스트 업데이트: README.md')
 
 # 변경 사항을 깃허브에 푸시
 repo.git.push()

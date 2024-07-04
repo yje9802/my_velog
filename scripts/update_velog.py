@@ -84,7 +84,10 @@ readme_path = os.path.join(posts_dir, "README.md")
 folders_files = check_posts(posts_dir)
 with open(readme_path, "w", encoding='utf-8') as f:
     f.write("# Velog 게시글 목록 한 눈에 보기\n")
-    print(folders_files.keys)
+    
+# 깃허브 커밋
+repo.git.add(readme_path)
+repo.git.commit('-m', f'포스트 업데이트: README.md')
 
 # 변경 사항을 깃허브에 푸시
 repo.git.push()

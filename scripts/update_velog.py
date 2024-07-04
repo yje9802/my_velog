@@ -68,16 +68,14 @@ def check_posts(path):
             # 폴더 내부 파일들 리스트에 저장
             # 폴더 안에 또다른 하위 폴더가 없는 구조이기에 가능 
             sub_files = []
-            for sub_item in os.listdir(item_path):
-                sub_item_path = os.path.join(item_path, sub_item.replace(" ", "_"))
-                
+            for sub_item in os.listdir(item_path): 
                 break_point = 0 # ] 부분 위치
                 for i in range(len(sub_item)):
                     if sub_item[i] == "]":
                         break_point = i+2
                         break
                 title = sub_item[break_point:-3] # 파일 이름에서 앞에 []부분과 뒤에 .md 제거
-                sub_files.append([title, sub_item_path])
+                sub_files.append(title)
             
             if len(sub_files) == 0:
                 # 빈 폴더면 삭제
@@ -96,7 +94,7 @@ with open(readme_path, "w", encoding='utf-8') as f:
     for folder in folders_files.keys():
         f.write(f"### 📁 {folder}\n")
         for file_info in folders_files[folder]:      
-            f.write(f"- [{file_info[0]}]({file_info[1]})  \n")
+            f.write(f"- {file_info}  \n")
     
 # 깃허브 커밋
 repo.git.add(readme_path)

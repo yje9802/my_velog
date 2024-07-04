@@ -29,6 +29,7 @@ for entry in feed.entries:
     file_name = entry.title
     file_name = file_name.replace('/', '-')  # 슬래시를 대시로 대체
     file_name = file_name.replace('\\', '-')  # 백슬래시를 대시로 대체
+    file_name = file_name.replace(' ', '_') # 띄어쓰기는 언더바로 대체
     
     # 카테고리별 하위 폴더 생성 
     if file_name[0] == '[':
@@ -59,45 +60,48 @@ for entry in feed.entries:
         repo.git.add(file_path)
         repo.git.commit('-m', f'포스트 업데이트: {entry.title}')
 
-
+# posts 폴더 아래 하위 폴더들의 파일 목록을 딕셔너리에 저장하여 반환하는 함수
 def check_posts(path):
     folder_file_list = {} # 폴더 이름: [파일1, 파일2, ...]
-    for item in os.listdir(path):
+    
+    for item in os.listdir(path): # path 경로의 하위 폴더 및 파일 순회
         item_path = os.path.join(path, item)
         if item != "README.md" and os.path.isdir(item_path) is True:
             # 폴더 내부 파일들 리스트에 저장
             # 폴더 안에 또다른 하위 폴더가 없는 구조이기에 가능 
             sub_files = []
             for sub_item in os.listdir(item_path): 
+                sub_item_path = "./" + item + sub_item
+                
+                sub_item = sub_item.replace('_', ' ') # 기존에 언더바로 대체되었던 띄어쓰기 복구
                 break_point = 0 # ] 부분 위치
                 for i in range(len(sub_item)):
                     if sub_item[i] == "]":
                         break_point = i+2
                         break
                 title = sub_item[break_point:-3] # 파일 이름에서 앞에 []부분과 뒤에 .md 제거
-                sub_files.append(title)
+                
+                sub_files.append([title, sub_item_path])
             
-            if len(sub_files) == 0:
-                # 빈 폴더면 삭제
+            if len(sub_files) == 0: # 빈 폴더면 삭제
                 os.rmdir(item_path)
-            else:
+            else: # 그게 아니면 딕셔너리에 저장
                 folder_file_list[item] = sub_files
-
     return folder_file_list
 
-readme_path = os.path.join(posts_dir, "README.md")
-if is_added:
-    # 추가된 게시글이 존재한다면 README 업데이트
-    folders_files = check_posts(posts_dir)
-    with open(readme_path, "w", encoding='utf-8') as f:
-        f.write("# 📌 Velog 게시글 목록 한 눈에 보기\n")
-        for folder in folders_files.keys():
-            f.write(f"### 📁 {folder}\n")
-            for file_info in folders_files[folder]:      
-                f.write(f"- {file_info}  \n")
-    # 깃허브 커밋
-    repo.git.add(readme_path)
-    repo.git.commit('-m', f'포스트 업데이트: README.md')
+readme_path = os.path.join(posts_dir, "README.md") # /posts/README.md
+# if is_added:
+# 추가된 게시글이 존재한다면 README 업데이트
+folders_files = check_posts(posts_dir)
+with open(readme_path, "w", encoding="utf-8") as f:
+    f.write("# 📌 Velog 게시글 목록 한 눈에 보기\n")
+    for folder in folders_files.keys():
+        f.write(f"### 📁 {folder}\n")
+        for file_info in folders_files[folder]:      
+            f.write(f"- [{file_info[0]}]({file_info[1]})  \n")
+# 깃허브 커밋
+repo.git.add(readme_path)
+repo.git.commit('-m', f'포스트 업데이트: README.md')
 
 # 변경 사항을 깃허브에 푸시
 repo.git.push()

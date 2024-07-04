@@ -72,3 +72,5 @@
 ### 🔗 참고 자료
 - <a href="https://velog.io/@sooozi/velog%EC%99%80-github-%EC%97%B0%EB%8F%99-%EB%B2%A8%EB%A1%9C%EA%B7%B8-%EA%B8%80%EC%93%B0%EA%B3%A0-%EC%9E%94%EB%94%94%EC%8B%AC%EA%B8%B0" target="blank">velog와 github 연동 : 벨로그 글쓰고 잔디심기 🌱</a>
 - <a href="https://feedparser.readthedocs.io/en/latest/common-rss-elements.html" target="blank">feedparser Documentation</a>
+- <a href="https://koopi.tistory.com/86" target="blank">[github] github에서 github actions로 ReadMe.md 자동으로 수정되게 하는 방법 (feat. 백준)</a>
+- <a href="https://uiyoji-journal.tistory.com/45" target="blank">[MarkDown] 마크다운 하위 폴더 내부 문서 경로 추가 / 목차 생성</a>

@@ -1,6 +1,6 @@
 # Velog 게시글 목록 한 눈에 보기
 ### 📁 [CS]
-- [브라우저 동작 과정](./[CS]/[CS]_브라우저_동작_과정.md)  
+- [브라우저 동작 과정](./posts/[CS]/[CS]_브라우저_동작_과정.md)  
 ### 📁 [LeetCode]
 - [1499. Max Value of Equation](./posts/[LeetCode]/[LeetCode]_1499._Max_Value_of_Equation.md)  
 ### 📁 [백준]

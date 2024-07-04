@@ -61,14 +61,16 @@ for entry in feed.entries:
 
 
 def check_posts(path):
-    folder_file_list = {}
+    folder_file_list = {} # 폴더 이름: [파일1, 파일2, ...]
     for item in os.listdir(path):
         item_path = os.path.join(path, item)
         if item != "README.md" and os.path.isdir(item_path) is True:
-            # 폴더면
+            # 폴더 내부 파일들 리스트에 저장
+            # 폴더 안에 또다른 하위 폴더가 없는 구조이기에 가능 
             sub_files = []
             for sub_item in os.listdir(item_path):
-                sub_files.append(sub_item)
+                sub_item_path = os.path.join(item_path, sub_item)
+                sub_files.append([sub_item, sub_item_path])
             
             if len(sub_files) == 0:
                 # 빈 폴더면 삭제
@@ -84,6 +86,11 @@ readme_path = os.path.join(posts_dir, "README.md")
 folders_files = check_posts(posts_dir)
 with open(readme_path, "w", encoding='utf-8') as f:
     f.write("# Velog 게시글 목록 한 눈에 보기\n")
+    for folder in folders_files.keys():
+        f.write(f"### 📁 {folder}\n")
+        
+        for file_info in folders_files[folder]:
+            f.write(f"[{file_info[0]}](\"{file_info[1]}\")\n")
     
 # 깃허브 커밋
 repo.git.add(readme_path)

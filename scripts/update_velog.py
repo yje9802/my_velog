@@ -84,8 +84,7 @@ readme_path = os.path.join(posts_dir, "README.md")
 folders_files = check_posts(posts_dir)
 with open(readme_path, "w", encoding='utf-8') as f:
     f.write("# Velog 게시글 목록 한 눈에 보기\n")
-    for key, value in folders_files:
-        f.write(f"{key} - {value} \n")
+    print(folders_files.keys)
 
 # 변경 사항을 깃허브에 푸시
 repo.git.push()

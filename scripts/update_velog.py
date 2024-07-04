@@ -70,6 +70,7 @@ def check_posts(path):
             sub_files = []
             for sub_item in os.listdir(item_path):
                 sub_item_path = os.path.join(item_path, sub_item)
+                sub_item_path = sub_item_path[2:]
                 
                 break_point = 0
                 for i in range(len(sub_item)):
@@ -97,7 +98,7 @@ with open(readme_path, "w", encoding='utf-8') as f:
         f.write(f"### 📁 {folder}\n")
         
         for file_info in folders_files[folder]:      
-            f.write(f"- [{file_info[0]}](\"{file_info[1]}\")  \n")
+            f.write(f"- [{file_info[0]}]({file_info[1]})  \n")
     
 # 깃허브 커밋
 repo.git.add(readme_path)

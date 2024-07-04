@@ -70,6 +70,8 @@ def check_posts(path):
             sub_files = []
             for sub_item in os.listdir(item_path):
                 sub_item_path = os.path.join(item_path, sub_item)
+                sub_item_path = sub_item_path[7:] # ./posts 부분 삭제
+                sub_item_path = ".." + sub_item_path
                 
                 break_point = 0 # ] 부분 위치
                 for i in range(len(sub_item)):

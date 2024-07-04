@@ -50,12 +50,17 @@
   - `checkout@v2`가 node12를 사용하는데 node12는 더이상 지원하지 않는 상황
   - 해결 방법
     - `checkout@v3`로 바꿔주면 된다.
+  
 - 블로그의 모든 게시글을 가져오지 못 하는 문제
   - Velog RSS로 한 번에 가져올 수 있는 게시글의 수가 총 20개로 제한되어 있는 것 같다.
+  
+- 불러온 게시글이 따로 수정되지 않는 문제
+  - RSS로 불러온 게시글은 마크다운 문법으로 저장되는 것이 아닌 **HTML 문법으로 변환되어 문자열**로 저장된다. 
+  - 따라서 수정하고 싶은 부분은 html로 작성해야 반영된다.
 
 <br> 
 
 ---
 ### 🔗 참고 자료
-- [velog와 github 연동 : 벨로그 글쓰고 잔디심기 🌱](https://velog.io/@sooozi/velog%EC%99%80-github-%EC%97%B0%EB%8F%99-%EB%B2%A8%EB%A1%9C%EA%B7%B8-%EA%B8%80%EC%93%B0%EA%B3%A0-%EC%9E%94%EB%94%94%EC%8B%AC%EA%B8%B0)
-- [feedparser Documentation](https://feedparser.readthedocs.io/en/latest/common-rss-elements.html)
+- <a href="https://velog.io/@sooozi/velog%EC%99%80-github-%EC%97%B0%EB%8F%99-%EB%B2%A8%EB%A1%9C%EA%B7%B8-%EA%B8%80%EC%93%B0%EA%B3%A0-%EC%9E%94%EB%94%94%EC%8B%AC%EA%B8%B0" target="blank">velog와 github 연동 : 벨로그 글쓰고 잔디심기 🌱</a>
+- <a href="https://feedparser.readthedocs.io/en/latest/common-rss-elements.html" target="blank">feedparser Documentation</a>

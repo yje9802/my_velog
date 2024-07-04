@@ -70,9 +70,8 @@ def check_posts(path):
             sub_files = []
             for sub_item in os.listdir(item_path):
                 sub_item_path = os.path.join(repo_path, sub_item)
-                sub_item_path = sub_item_path[2:]
                 
-                break_point = 0
+                break_point = 0 # ] 부분 위치
                 for i in range(len(sub_item)):
                     if sub_item[i] == "]":
                         break_point = i+2
@@ -96,7 +95,6 @@ with open(readme_path, "w", encoding='utf-8') as f:
     f.write("# Velog 게시글 목록 한 눈에 보기\n")
     for folder in folders_files.keys():
         f.write(f"### 📁 {folder}\n")
-        
         for file_info in folders_files[folder]:      
             f.write(f"- [{file_info[0]}]({file_info[1]})  \n")
     

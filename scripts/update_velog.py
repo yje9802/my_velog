@@ -69,7 +69,7 @@ def check_posts(path):
             # 폴더 안에 또다른 하위 폴더가 없는 구조이기에 가능 
             sub_files = []
             for sub_item in os.listdir(item_path):
-                sub_item_path = os.path.join(item_path, sub_item)
+                sub_item_path = os.path.join(repo_path, sub_item)
                 sub_item_path = sub_item_path[2:]
                 
                 break_point = 0
@@ -78,7 +78,7 @@ def check_posts(path):
                         break_point = i+2
                         break
                 title = sub_item[break_point:-3] # 파일 이름에서 앞에 []부분과 뒤에 .md 제거
-                sub_files.append([title, sub_item])
+                sub_files.append([title, sub_item_path])
             
             if len(sub_files) == 0:
                 # 빈 폴더면 삭제

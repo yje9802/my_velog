@@ -71,9 +71,12 @@ def check_posts(path):
             for sub_item in os.listdir(item_path):
                 sub_item_path = os.path.join(item_path, sub_item)
                 
+                break_point = 0
                 for i in range(len(sub_item)):
                     if sub_item[i] == "]":
-                        title = sub_item[i+1:-3]
+                        break_point = i+2
+                        break
+                title = sub_item[i:-3] # 파일 이름에서 앞에 []부분과 뒤에 .md 제거
                 sub_files.append([title, sub_item_path])
             
             if len(sub_files) == 0:
@@ -94,7 +97,7 @@ with open(readme_path, "w", encoding='utf-8') as f:
         f.write(f"### 📁 {folder}\n")
         
         for file_info in folders_files[folder]:      
-            f.write(f"- [{file_info[0]}]({file_info[1]})  \n")
+            f.write(f"- [{file_info[0]}](#{file_info[1]})  \n")
     
 # 깃허브 커밋
 repo.git.add(readme_path)

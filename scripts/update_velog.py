@@ -90,7 +90,7 @@ def check_posts(path):
     return folder_file_list
 
 readme_path = os.path.join(posts_dir, "README.md") # /posts/README.md
-# if is_added:
+if is_added:
     # 추가된 게시글이 존재한다면 README 업데이트
     folders_files = check_posts(posts_dir)
     with open(readme_path, "w", encoding="utf-8") as f:

@@ -90,7 +90,7 @@ with open(readme_path, "w", encoding='utf-8') as f:
         f.write(f"### 📁 {folder}\n")
         
         for file_info in folders_files[folder]:
-            f.write(f"[{file_info[0]}](\"{file_info[1]}\")\n")
+            f.write(f"[{file_info[0]}]({file_info[1]})  ")
     
 # 깃허브 커밋
 repo.git.add(readme_path)

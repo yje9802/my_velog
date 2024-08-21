@@ -71,7 +71,7 @@ def check_posts(path):
             # 폴더 안에 또다른 하위 폴더가 없는 구조이기에 가능 
             sub_files = []
             for sub_item in os.listdir(item_path): 
-                sub_item_path = "./" + item + "/" + sub_item
+                sub_item_path = "./" + item + "/" + sub_item    
                 
                 sub_item = sub_item.replace('_', ' ') # 기존에 언더바로 대체되었던 띄어쓰기 복구
                 break_point = 0 # ] 부분 위치

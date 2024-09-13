@@ -1,6 +1,7 @@
 # 📌 Velog 게시글 목록 한 눈에 보기
 ### 📁 [Java]
 - [Static method, Instance method](./[Java]/[Java]_Static_method,_Instance_method.md)  
+- [자바 면접 대비 개념 정리 (5) - JVM](./[Java]/[Java]_자바_면접_대비_개념_정리_(5)_-_JVM.md)  
 - [자바 면접 대비 개념 정리 (4) - 동시성](./[Java]/[Java]_자바_면접_대비_개념_정리_(4)_-_동시성.md)  
 - [자바 면접 대비 개념 정리 (3)](./[Java]/[Java]_자바_면접_대비_개념_정리_(3).md)  
 - [자바 면접 대비 개념 정리 (2)](./[Java]/[Java]_자바_면접_대비_개념_정리_(2).md)  
